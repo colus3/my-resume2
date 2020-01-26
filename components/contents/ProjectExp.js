@@ -2,6 +2,7 @@
  * Created by Colus on 2016. 8. 21..
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import _ from 'lodash';
 
@@ -29,7 +30,7 @@ const ProjectExperience = (props) => {
   return (<ContentItem resumeUIType={props.resumeUIType} title={props.data.display_name} contentItems={contentItems}/>);
 };
 
-ProjectExperience.propTypes = { resumeUIType: React.PropTypes.string, data: React.PropTypes.object };
-ProjectExperience.defaultProps = { resumeUIType: '', data: { display_name: '', type: '', contents: [] } };
+ProjectExperience.propTypes = {resumeUIType: PropTypes.string, data: PropTypes.object};
+ProjectExperience.defaultProps = {resumeUIType: '', data: {display_name: '', type: '', contents: []}};
 
 export default ProjectExperience;
