@@ -1,0 +1,14 @@
+div.icon-right svg {
+    margin-left: 10px;
+}
+
+div.icon-left svg {
+    margin-right: 10px;
+}
+
+div.name h1 {
+    margin-bottom: 40px;
+}
+div.title h2 {
+    margin-bottom: 20px;
+}
