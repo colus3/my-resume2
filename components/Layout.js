@@ -10,32 +10,29 @@ import UserInfo from "./UserInfo";
 import LeftContents from "./LeftContents";
 import RightContents from "./RightContents";
 
-const Layout = (props) => {
+const Layout = ({ resume }) => {
   const onDownload = () => {
     alert('다운로드 준비중...');
   };
 
-  const userInfo = {
-    name: 'Donghwan Lee',
-    phone: '+82-10-2041-9909',
-    email: 'colus4@gmail.com',
-    birthDate: '1982-01-26',
-    address: '경기 고양시 일산서구 주엽동',
-    shortUrl: 'http://tinyurl.com/hq5wn7p',
-  };
+  const { user } = resume;
+
+  // const userInfo = {
+  //   name: 'Donghwan Lee',
+  //   phone: '+82-10-2041-9909',
+  //   email: 'colus4@gmail.com',
+  //   birthDate: '1982-01-26',
+  //   address: '경기 고양시 일산서구 주엽동',
+  //   shortUrl: 'http://tinyurl.com/hq5wn7p',
+  // };
 
   return (
     <div>
-      <Jumbotron className="resumeTitle" fluid style={{
-        color: '#fff',
-        backgroundImage: 'url(https://source.unsplash.com/category/nature/1600x400)',
-        backgroundSize: 'cover',
-        paddingBottom: '6px'
-      }}>
+      <Jumbotron fluid>
         <Container fluid>
           <Row>
             <Col xs="12" sm="8" md="5" style={{ marginBottom: '25px' }}>
-              <Name>{userInfo.name}</Name>
+              <Name>{user.username}</Name>
               <Title>프로그래밍을 좋아하는 개발자</Title>
               <Button outline color="light" onClick={onDownload}>Download PDF</Button>
             </Col>
@@ -47,14 +44,14 @@ const Layout = (props) => {
               </p>
             </Col>
             <Col xs="12" sm="4" md="5">
-              <UserInfo info={userInfo}/>
+              <UserInfo info={user}/>
             </Col>
           </Row>
         </Container>
         <h6 className="d-none d-lg-inline-block">
           <div className="icon">
             <FontAwesomeIcon icon={faChevronRight} />
-            This page is designed using Node.js, Express.js, React.js, Redux, MariaDB, Bootstrap, Phantom.js, TeamCity, Docker, AWS.
+            This page is designed using Node.js, React.js, Redux, Next.js, MariaDB, Bootstrap, Phantom.js, Docker, AWS.
           </div>
         </h6>
       </Jumbotron>
