@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RightContents = (props) => (
+const RightContents = ({ contents }) => (
   <div>
     Right Content
   </div>

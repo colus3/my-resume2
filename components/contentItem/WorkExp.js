@@ -2,17 +2,16 @@
  * Created by Colus on 2016. 8. 20..
  */
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import PropTypes from 'prop-types';
+import Markdown from 'react-markdown';
 import _ from 'lodash';
 
-import { DateTime, DateFormat, DateLocale } from 'dateutils';
+import ContentItem from '../ContentItem';
+import TimeLine from "../common/Timeline";
 
-import { ContentItem, TimeLine, ContentDetailType } from '../../components';
-import { TimeLineData } from '../../domains';
+const WorkExperience = ({ content }) => {
 
-const WorkExperience = (props) => {
-
-  if ( _.isEmpty(props.data.contents) ) {
+  if ( _.isEmpty(content.items) ) {
     return (<ContentItem />);
   }
 
@@ -23,7 +22,7 @@ const WorkExperience = (props) => {
   case ContentDetailType.TYPE3: contentItems = createDetailType3Items(props.data); break;
   }
 
-  return (<ContentItem resumeUIType={props.resumeUIType} title={props.data.display_name} contentItems={contentItems}/>);
+  return <ContentItem title={content.name} contentItems={contentItems}/>;
 };
 
 const createDetailType1Items = data => {
@@ -57,7 +56,7 @@ const createDetailType2Items = data => {
     return (
         <div key={i}>
           <h3>{work.title} {date}</h3>
-          <ReactMarkdown source={work.desc}/>
+          <Markdown source={work.desc}/>
           {labels}
         </div>
     );
@@ -89,6 +88,5 @@ const createDetailType3Items = data => {
 };
 
 WorkExperience.propTypes = { resumeUIType: React.PropTypes.string, data: React.PropTypes.object };
-WorkExperience.defaultProps = { resumeUIType: '', data: { display_name: '', type: '', content_detail_type: 1, contents: [] } };
 
 export default WorkExperience;

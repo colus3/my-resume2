@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Button, Col, Container, Jumbotron, Row } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -7,15 +7,19 @@ import '../public/css/my-resume2.css';
 import Title from './Title';
 import Name from './Name';
 import UserInfo from "./UserInfo";
-import LeftContents from "./LeftContents";
-import RightContents from "./RightContents";
+import Contents from "./Contents";
 
 const Layout = ({ resume }) => {
-  const onDownload = () => {
+  const onDownload = useCallback(() => {
     alert('다운로드 준비중...');
-  };
+  }, []);
 
-  const { user } = resume;
+  const { user, resumeContents } = resume;
+  console.log('resume : ', resume);
+  const leftContents = resumeContents.filter(e => e.position === 'LEFT');
+  console.log('leftContents : ', leftContents);
+  const rightContents = resumeContents.filter(e => e.position === 'RIGHT');
+  console.log('rightContents : ', rightContents);
 
   // const userInfo = {
   //   name: 'Donghwan Lee',
@@ -40,7 +44,7 @@ const Layout = ({ resume }) => {
               <p>
                 <img src="/my-image.png"
                      className="rounded-circle mx-auto d-block" alt="Responsive image"
-                     style={{height: '150px'}} />
+                     style={{ height: '150px', backgroundColor: 'rgba(155, 155, 155, 0.5)' }} />
               </p>
             </Col>
             <Col xs="12" sm="4" md="5">
@@ -55,18 +59,18 @@ const Layout = ({ resume }) => {
           </div>
         </h6>
       </Jumbotron>
-      <div>
+      <Container>
         <Row>
           <Col md="12" lg="6">
-            <LeftContents/>
+            <Contents key="left" contents={leftContents}/>
           </Col>
           <Col md="12" lg="6">
-            <RightContents/>
+            <Contents key="right" contents={rightContents}/>
           </Col>
         </Row>
-      </div>
+      </Container>
     </div>
   );
-}
+};
 
 export default Layout;
