@@ -3,10 +3,9 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import ContentItem from '../ContentItem';
 import _ from 'lodash';
-import Education from "./Education";
 
 const Profile = ({ content }) => {
 
@@ -14,10 +13,8 @@ const Profile = ({ content }) => {
     return (<ContentItem />);
   }
 
-  let items = [];
-  items.push(<ReactMarkdown key={content.items[0].title} source={content.items[0].contents}/>);
-  console.log('items : ', items);
-  // return <div></div>;
+  const items = [];
+  items.push(<Markdown key={content.items[0].title} source={content.items[0].contents}/>);
   return (<ContentItem title={content.name} items={items}/>);
 };
 

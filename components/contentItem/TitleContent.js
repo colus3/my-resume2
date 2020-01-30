@@ -2,68 +2,48 @@
  * Created by colus on 2017. 4. 29..
  */
 import React from 'react';
-import { connect } from 'react-redux';
-import { Jumbotron, Grid, Row, Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Jumbotron, Row, Col, Button, Container } from 'reactstrap';
+import Name from "../Name";
+import Title from "../Title";
+import UserInfo from "./UserInfo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-class TitleContent extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.handleDownload = this.handleDownload.bind(this);
-  }
-
-  handleDownload() {
-    window.location.assign(`${this.props.apiServerUrl}/download?url=${encodeURIComponent(this.props.resumeUrl)}`);
-  }
-
-  render() {
-    const baseStyle = {
-      // color: '#cdbfe3',
-      color: '#fff',
-      // backgroundColor: '#6f5499',
-      backgroundImage: 'url(https://source.unsplash.com/category/nature/1600x400)',
-      backgroundSize: 'cover',
-      paddingBottom: '6px' };
-    const nameStyle = { color: '#fff' };
-    const imgStyle = { height: '150px' };
-
-    return (
-        <Jumbotron id="content" tabIndex="-1" style={baseStyle}>
-          <Grid fluid>
-            <Row>
-              <Col>
-                <h2 style={nameStyle}>{this.props.name}</h2>
-                <h2>{this.props.moto}</h2>
-                <p className="lead">
-                  <a className="btn btn-outline-inverse btn-lg hidden-print" href="#" onClick={this.handleDownload} role="button">Download PDF</a>
-                </p>
-              </Col>
-            </Row>
-          </Grid>
-          <h6 className="visible-lg-inline-block">
-            <span className="glyphicon glyphicon-console"/>
-            This page is designed using Node.js, Express.js, React.js, Redux, MariaDB, Bootstrap, Phantom.js, TeamCity, Docker, AWS.
-          </h6>
-        </Jumbotron>
-    );
-  }
-}
+const TitleContent = ({ user, shortIntro, onDownload }) => (
+  <Jumbotron fluid>
+    <Container fluid>
+      <Row>
+        <Col xs="12" sm="8" md="5" style={{ marginBottom: '25px' }}>
+          <Name>{user.username}</Name>
+          <Title>{shortIntro}</Title>
+          <Button outline color="light" onClick={onDownload}>Download PDF</Button>
+        </Col>
+        <Col className="d-none d-md-block" md="2">
+          <p>
+            <img src="/my-image.png"
+                 className="rounded-circle mx-auto d-block" alt="Responsive image"
+                 style={{ height: '150px', backgroundColor: 'rgba(155, 155, 155, 0.5)' }} />
+          </p>
+        </Col>
+        <Col xs="12" sm="4" md="5">
+          <UserInfo info={user}/>
+        </Col>
+      </Row>
+    </Container>
+    <h6 className="d-none d-lg-inline-block">
+      <div className="icon">
+        <FontAwesomeIcon icon={faChevronRight} />
+        This page is designed using Node.js, React.js, Redux, Next.js, MariaDB, Bootstrap, Phantom.js, Docker, AWS.
+      </div>
+    </h6>
+  </Jumbotron>
+);
 
 TitleContent.propTypes = {
-  name: React.PropTypes.string,
-  moto: React.PropTypes.string,
-  resumeUrl: React.PropTypes.string,
-  apiServerUrl: React.PropTypes.string,
+  user: PropTypes.object,
+  shortIntro: PropTypes.string,
+  onDownload: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    name: state.User.user_name,
-    moto: state.User.moto,
-    resumeUrl: state.resume_short_url,
-    apiServerUrl: state.api_server_url
-  };
-};
-
-export default connect(mapStateToProps)(TitleContent);
+export default TitleContent;

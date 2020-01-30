@@ -18,7 +18,7 @@ const Contents = ({ contents }) => {
       case 'INTEREST': return <Interest key={index} content={content} />;
       case 'CERTIFICATION': return <Certification key={index} content={content} />;
       case 'SKILL': return <Skill key={index} content={content} />;
-      // case 'WORK_EXPERIENCE': return <WorkExperience key={index} content={content} />;
+      case 'WORK_EXPERIENCE': return <WorkExperience key={index} content={content} />;
     }
   });
 

@@ -16,19 +16,22 @@ const Certification = ({ content }) => {
   }
 
   const certifications = content.items.map( certification => {
-    return `* ${certification.startDt} ${certification.title}\n`;
+    return `* ${certification.startDt} ${certification.contents}\n`;
   }).join(' ');
 
   const contentItems = [];
   contentItems.push(<Markdown key={content.type} source={certifications} />);
-  return (<ContentItem title={props.data.display_name} items={contentItems}/>);
+  return (<ContentItem title={content.name} items={contentItems}/>);
 };
 
 Certification.propTypes = {
   content: PropTypes.shape({
     type: PropTypes.string,
     name: PropTypes.string,
-    items: PropTypes.array,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      startDt: PropTypes.string,
+      contents: PropTypes.string,
+    })),
   }),
 };
 

@@ -10,7 +10,7 @@ import ContentItem from '../ContentItem';
 
 const Skill = ({ content }) => {
 
-  if ( _.isEmpty(c.items) ) {
+  if ( _.isEmpty(content.items) ) {
     return (<ContentItem />);
   }
 
@@ -27,26 +27,20 @@ const createSkills = (skill, i, isPrint) => {
 
   const color = ['success', 'info', 'warning', 'danger', 'primary'];
 
-  // const level = { width: `${skill.label}%` };
-  const progressVisible = `${isPrint ? 'd-print-inline' : 'd-print-none'}`;
-  const progressBarColor = `${isPrint ? 'gray' : `${color[i % color.length]}`}`;
+  const level = { width: `${skill.point}%` };
+  const progressVisible = `progress ${isPrint ? 'd-print-inline d-none' : 'd-print-none'}`;
+  const progressBarColor = `progress-bar ${isPrint ? 'gray' : `progress-bar-striped progress-bar-animated bg-${color[i % color.length]}`}`;
   return (
-      <div className={progressVisible} key={i}>
-        <Progress animated color={progressBarColor} value={skill.point}>
-        </Progress>
-        <span className="progress-type">{skill.tagName}</span>
-        <span className="progress-completed">{skill.point} %</span>
+    <div className={progressVisible} key={i}>
+      <div className={progressBarColor}
+           role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+           style={level}>
       </div>
+      <span className="progress-type">{skill.tagNames[0]}</span>
+      <span className="progress-completed">{skill.point} %</span>
+    </div>
   );
 };
-
-// const createDetailType1Items = data => {
-//
-//   const skills = data.contents.slice(0, 10).map((skill, i) => createSkills(skill, i, false));
-//   const skillsPrint = data.contents.slice(0, 10).map((skill, i) => createSkills(skill, i, true));
-//
-//   return [skills, skillsPrint];
-// };
 
 const createItems = content => {
 
@@ -55,10 +49,10 @@ const createItems = content => {
 
   const createTag = (e) => (
     <Row>
-      <Col xs={12} sm={12} md={6} lg={6}>
+      <Col xl={12}>
         {e.length % 2 === 0 ? e.slice(0, e.length / 2) : e.slice(0, e.length / 2 + 1)}
       </Col>
-      <Col xs={12} sm={12} md={6} lg={6}>
+      <Col xl={12}>
         {e.length % 2 === 0 ? e.slice(e.length / 2) : e.slice(e.length / 2 + 1)}
       </Col>
     </Row>
@@ -71,7 +65,10 @@ Skill.propTypes = {
   content: PropTypes.shape({
     type: PropTypes.string,
     name: PropTypes.string,
-    items: PropTypes.array,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      tagNames: PropTypes.array,
+      point: PropTypes.number,
+    })),
   }),
 };
 

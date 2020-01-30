@@ -50,7 +50,7 @@ const Interest = ({ content }) => {
 const createItems = content => {
 
   const interests = content.items.map((interest, idx) => {
-    return {value: interest.tagName, count: (100 - idx * 2)};
+    return {value: interest.tagNames[0], count: (100 - idx * 2)};
   });
 
   console.log('interests', interests);

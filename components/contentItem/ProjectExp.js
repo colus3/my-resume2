@@ -18,8 +18,8 @@ const ProjectExperience = (props) => {
   let datas = props.data.contents.map((project, i) => {
     return new TimeLineData(
       i,
-      new Date(project.start_date),
-      new Date(project.end_date),
+      new Date(project.startDt),
+      new Date(project.endDt),
       project.title,
       `role : ${project.contents}`,
       project.label ? new Object(project.label).toString().split(',') : []
@@ -29,8 +29,5 @@ const ProjectExperience = (props) => {
   contentItems.push(<TimeLine2 datas={datas} useYearLabel/>);
   return (<ContentItem resumeUIType={props.resumeUIType} title={props.data.display_name} contentItems={contentItems}/>);
 };
-
-ProjectExperience.propTypes = {resumeUIType: PropTypes.string, data: PropTypes.object};
-ProjectExperience.defaultProps = {resumeUIType: '', data: {display_name: '', type: '', contents: []}};
 
 export default ProjectExperience;
