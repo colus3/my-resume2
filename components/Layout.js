@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import '../public/css/my-resume2.css';
 import Contents from "./Contents";
-import TitleContent from "./contentItem/TitleContent";
+import TitleContent from "./items/TitleContent";
 
 const Layout = ({ resume }) => {
   const onDownload = useCallback(() => {

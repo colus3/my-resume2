@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Profile from './contentItem/Profile';
-import Education from "./contentItem/Education";
-import Interest from "./contentItem/Interest";
-import Certification from "./contentItem/Certification";
-import Skill from "./contentItem/Skill";
-import WorkExperience from "./contentItem/WorkExp";
+import Profile from './items/Profile';
+import Education from "./items/Education";
+import Interest from "./items/Interest";
+import Certification from "./items/Certification";
+import Skill from "./items/Skill";
+import WorkExperience from "./items/WorkExp";
 
 const Contents = ({ contents }) => {
 

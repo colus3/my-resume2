@@ -745,3 +745,12 @@ div.item-header {
         margin-top: 0;
     }
 }
+
+.timeline3 {
+    margin-bottom: 15px;
+}
+.timeline3 .badge {
+    display: inline-block;
+    margin-right: 5px;
+    color: #fff;
+}

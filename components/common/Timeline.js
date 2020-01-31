@@ -12,7 +12,6 @@ const TimeLine = ({ data, usePeriod }) => {
 
   const timeLines = data.map( item => {
 
-    console.log('item ', item);
     let period = '';
     if ( usePeriod ) {
       // if ( item.period.year > 0 && item.period.month > 0 ) {

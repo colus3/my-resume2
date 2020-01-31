@@ -19,11 +19,10 @@ const ContentItem = ({ title, items }) => {
   // }
 };
 
-// ContentItem.propTypes = {
-//   resumeUIType: PropTypes.string,
-//   title: PropTypes.string,
-//   contentItems: PropTypes.array
-// };
-// ContentItem.defaultProps = { resumeUIType: '', title: '', contentItems: [] };
+ContentItem.propTypes = {
+  resumeUIType: PropTypes.string,
+  title: PropTypes.string,
+  contentItems: PropTypes.array
+};
 
 export default ContentItem;

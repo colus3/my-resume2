@@ -3,12 +3,10 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Markdown from 'react-markdown';
 import _ from 'lodash';
 
 import ContentItem from '../ContentItem';
-import TimeLine from "../common/Timeline";
-import Skill from "./Skill";
+import TimeLine3 from "../common/Timeline3";
 
 const WorkExperience = ({ content }) => {
 
@@ -100,7 +98,8 @@ const createItems = (content) => {
   }));
 
   const contentItems = [];
-  contentItems.push(<TimeLine data={works} usePeriod />);
+  // contentItems.push(<TimeLine data={works} usePeriod />);
+  contentItems.push(<TimeLine3 data={works} />);
 
   return contentItems;
 };
