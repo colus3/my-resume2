@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Col, Container, Row } from 'reactstrap';
+import Head from 'next/head';
 import '../public/css/my-resume2.css';
 import Contents from "./Contents";
 import TitleContent from "./items/TitleContent";
@@ -27,6 +28,9 @@ const Layout = ({ resume }) => {
 
   return (
     <div>
+      <Head>
+        <title>{`${user.username}'s Resume`}</title>
+      </Head>
       <TitleContent user={user} shortIntro={shortIntro} onDownload={onDownload} />
       <Container>
         <Row>
