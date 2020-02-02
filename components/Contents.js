@@ -9,9 +9,7 @@ import WorkExperience from "./items/WorkExp";
 
 const Contents = ({ contents }) => {
 
-  // console.log('contents ', contents);
   const items = contents.map((content, index) => {
-    console.log('content : ', content);
     switch (content.type) {
       case 'PROFILE': return <Profile key={index} content={content} />;
       case 'EDUCATION': return <Education key={index} content={content} />;

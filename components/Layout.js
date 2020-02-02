@@ -11,11 +11,8 @@ const Layout = ({ resume }) => {
   }, []);
 
   const { user, resumeContents, shortIntro } = resume;
-  console.log('resume : ', resume);
   const leftContents = resumeContents.filter(e => e.position === 'LEFT');
-  console.log('leftContents : ', leftContents);
   const rightContents = resumeContents.filter(e => e.position === 'RIGHT');
-  console.log('rightContents : ', rightContents);
 
   // const userInfo = {
   //   name: 'Donghwan Lee',

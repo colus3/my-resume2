@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  app:
+    container_name: my-resume2-app
+    image: my-resume2-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - TZ=Asia/Seoul
+    external_links:
+      - my-resume2-api:api
+networks:
+  default:
+    external:
+      name: my-resume2

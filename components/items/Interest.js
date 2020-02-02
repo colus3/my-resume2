@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import { TagCloud } from 'react-tagcloud';
 import _ from 'lodash';
 
-// import { ContentItem, ContentDetailType } from '../../components';
-import ContentItem from '../contentItem';
+import ContentItem from '../ContentItem';
 
 const Interest = ({ content }) => {
 
@@ -16,44 +15,15 @@ const Interest = ({ content }) => {
   }
 
   const contentItems = createItems(content);
-  console.log(contentItems);
-  // switch ( props.data.content_detail_type ) {
-  // case ContentDetailType.TYPE1: contentItems = createDetailType1Items(props.data); break;
-  // case ContentDetailType.TYPE2: contentItems = createDetailType2Items(props.data); break;
-  // }
 
   return (<ContentItem key={content.types} title={content.name} items={contentItems}/>);
 };
-
-// const createDetailType1Items = data => {
-//
-//   const style = { 'display': 'inline-block', 'marginRight': '5px' };
-//   const color = ['success', 'info', 'warning', 'danger', 'primary'];
-//
-//   const interests = data.contents.map((interest, i) => {
-//     return (
-//         <span
-//             key={i}
-//             className={`label label-${color[parseInt(i / 5) > 4 ? 4 : parseInt(i / 5)]}`}
-//             style={style}>
-//         {interest.title}
-//       </span>
-//     );
-//   });
-//
-//   const contentItems = [];
-//   contentItems.push(<h3>{interests}</h3>);
-//
-//   return contentItems;
-// };
 
 const createItems = content => {
 
   const interests = content.items.map((interest, idx) => {
     return {value: interest.tagNames[0], count: (100 - idx * 2)};
   });
-
-  console.log('interests', interests);
 
   const contentItems = [];
   contentItems.push(
