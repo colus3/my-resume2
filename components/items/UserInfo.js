@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { QRCode } from "react-qrcode";
 import Text from "../Text";
 import { faEnvelope, faHome, faLink, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,7 +19,7 @@ const UserInfo = ({ info }) => (
       <Text icon={faHome} iconRight>{info.address}</Text>
     </h5>
     <h5 className="text-right">
-      <Text icon={faLink} iconRight><a className="text-white" href={info.shortUrl}>{info.shortUrl}</a></Text>
+      <Text><a href="http://localhost:3000"><QRCode value="http://localhost:3000" scale={2.2} color={{ light: '#ffffff7f' }}/></a></Text>
     </h5>
   </>
 );

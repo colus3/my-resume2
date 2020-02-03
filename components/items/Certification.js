@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Markdown from 'react-markdown';
 
 import _ from 'lodash';
+import moment from "moment";
 
 import ContentItem from '../ContentItem';
 
@@ -16,7 +17,7 @@ const Certification = ({ content }) => {
   }
 
   const certifications = content.items.map( certification => {
-    return `* ${certification.startDt} ${certification.contents}\n`;
+    return `* ${moment(certification.startDt).format('YYYY-MM')} ${moment(certification.endDt).format('YYYY-MM')}\n`;
   }).join(' ');
 
   const contentItems = [];

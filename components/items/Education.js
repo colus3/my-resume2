@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MarkDown from 'react-markdown';
 import _ from 'lodash';
+import moment from "moment";
 
 import ContentItem from '../ContentItem';
 
@@ -15,7 +16,7 @@ const Education = ({ content }) => {
   }
 
   const educations = content.items.map( education => {
-    return `* ${education.startDt} ~ ${education.endDt} ${education.contents}\n`;
+    return `* ${moment(education.startDt).format('YYYY-MM')} ~ ${moment(education.endDt).format('YYYY-MM')} ${education.contents}\n`;
   }).join(' ');
 
   const contentItems = [];

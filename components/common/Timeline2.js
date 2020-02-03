@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from 'reactstrap';
+import moment from "moment";
 
 const TimeLine2 = ({ data, useYearLabel }) => {
 
@@ -44,7 +45,7 @@ function createTimeLine( datas, useYearLabel ) {
         <div className="timeline-event">
           <div className="timeline-heading">
             <h4 className="timeline-title">
-              <span name="title">{data.startDt} ~ {data.endDt} <strong>{data.title}</strong> </span>
+              <span name="title">{moment(data.startDt).format('YYYY-MM')} ~ {moment(data.endDt).format('YYYY-MM')} <strong>{data.title}</strong> </span>
             </h4>
           </div>
           <div className="timeline-body">

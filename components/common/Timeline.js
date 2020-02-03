@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { Badge } from 'reactstrap';
+import moment from "moment";
 
 const TimeLine = ({ data, usePeriod }) => {
     
@@ -26,7 +27,7 @@ const TimeLine = ({ data, usePeriod }) => {
     const timeLineHead = (
       <div className="timeline-heading">
         <h4 className="timeline-title">
-          <span name="title">{item.startDt} ~ {item.endDt} <strong>{item.title}</strong></span>
+          <span name="title">{moment(item.startDt).format('YYYY-MM')} ~ {moment(item.endDt).format('YYYY-MM')} <strong>{item.title}</strong></span>
         </h4>
       </div>
     );

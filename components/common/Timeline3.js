@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from "react-markdown";
+import moment from "moment";
 import { Badge } from "reactstrap";
 
 const Timeline3 = ({ data }) => {
 
   return data.map( (item, i) => {
-    const date = `(${item.startDt.slice(0, 7)} ~ ${item.endDt.slice(0, 7)})`;
+    const date = `(${moment(item.startDt).format('YYYY-MM')} ~ ${moment(item.endDt).format('YYYY-MM')})`;
     const badges = item.badges.map((badge) => (<Badge color="secondary">{badge}</Badge>));
     return (
       <div className="timeline3" key={i}>
