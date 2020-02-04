@@ -31,10 +31,10 @@ const Layout = ({ resume }) => {
       <TitleContent user={user} shortIntro={shortIntro} onDownload={onDownload} />
       <Container>
         <Row>
-          <Col md="12" lg="4">
+          <Col md="12" lg="5">
             <Contents key="left" contents={leftContents}/>
           </Col>
-          <Col md="12" lg="8">
+          <Col md="12" lg="7">
             <Contents key="right" contents={rightContents}/>
           </Col>
         </Row>

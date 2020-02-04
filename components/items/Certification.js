@@ -17,11 +17,11 @@ const Certification = ({ content }) => {
   }
 
   const certifications = content.items.map( certification => {
-    return `* ${moment(certification.startDt).format('YYYY-MM')} ${moment(certification.endDt).format('YYYY-MM')}\n`;
+    return `* ${moment(certification.startDt).format('YYYY-MM')} ${certification.contents}\n`;
   }).join(' ');
 
   const contentItems = [];
-  contentItems.push(<Markdown key={content.type} source={certifications} />);
+  contentItems.push(<Markdown key={content.type} source={certifications}/>);
   return (<ContentItem title={content.name} items={contentItems}/>);
 };
 
