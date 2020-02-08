@@ -1,13 +1,26 @@
-import React, { useCallback } from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Button, Col, Container, Row } from 'reactstrap';
 import Head from 'next/head';
 import '../public/css/my-resume2.css';
 import Contents from "./Contents";
 import TitleContent from "./items/TitleContent";
+import ContentItem from "./ContentItem";
 
 const Layout = ({ resume }) => {
+  const [showButton, setShowButton] = useState(false);
+  useEffect(() => {
+    const checkTopPosition = e => {
+      e.clientY < 30 ? setShowButton(true) : setShowButton(false);
+    };
+    window.addEventListener("mousemove", checkTopPosition);
+  }, []);
+
   const onDownload = useCallback(() => {
     alert('다운로드 준비중...');
+  }, []);
+
+  const onLogin = useCallback(() => {
+    location.href="http://localhost:5000/login";
   }, []);
 
   const { user, resumeContents, shortIntro } = resume;
@@ -28,6 +41,11 @@ const Layout = ({ resume }) => {
       <Head>
         <title>{`${user.username}'s Resume`}</title>
       </Head>
+      {showButton &&
+      <Container fluid className="top-container">
+        <Button className="float-right login" outline color="light" size="sm" onClick={onLogin}>로그인</Button>
+      </Container>
+      }
       <TitleContent user={user} shortIntro={shortIntro} onDownload={onDownload} />
       <Container>
         <Row>

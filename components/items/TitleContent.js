@@ -27,7 +27,7 @@ const TitleContent = ({ user, shortIntro, onDownload }) => (
           </p>
         </Col>
         <Col xs="12" sm="4" md="5">
-          <UserInfo info={user}/>
+          <UserInfo user={user}/>
         </Col>
       </Row>
     </Container>
