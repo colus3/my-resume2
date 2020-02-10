@@ -20,7 +20,7 @@ const Layout = ({ resume }) => {
   }, []);
 
   const onLogin = useCallback(() => {
-    location.href="http://localhost:5000/login";
+    location.href="http://localhost:5000";
   }, []);
 
   const { user, resumeContents, shortIntro } = resume;
