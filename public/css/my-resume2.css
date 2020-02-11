@@ -770,6 +770,9 @@ div.top-container {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+span.login-text > h6 {
+    margin: 15px 25px 0 0;
+}
 button.login {
-    margin: 10px 0 10px;
+    margin: 10px 5px 10px;
 }

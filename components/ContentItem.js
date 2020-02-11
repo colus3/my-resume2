@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const ContentItem = ({ title, items }) => {
-  // switch( props.resumeUIType ) {
-  // case 'bootstrap':
     const contentTitle = _.isEmpty(title) ? '' : (<div className='item-header'><h2>{title}</h2></div>);
     return (
         <div key={title}>
@@ -15,14 +13,11 @@ const ContentItem = ({ title, items }) => {
           {items}
         </div>
     );
-  // default: return <div>.</div>;
-  // }
 };
 
 ContentItem.propTypes = {
-  resumeUIType: PropTypes.string,
   title: PropTypes.string,
-  contentItems: PropTypes.array
+  items: PropTypes.array
 };
 
 export default ContentItem;
