@@ -15,10 +15,6 @@ const Skill = ({ content }) => {
   }
 
   const contentItems = createItems(content);
-  // switch ( props.data.content_detail_type ) {
-  // case ContentDetailType.TYPE1: contentItems = createDetailType1Items(props.data); break;
-  // case ContentDetailType.TYPE2: contentItems = createDetailType2Items(props.data); break;
-  // }
 
   return <ContentItem title={content.name} items={contentItems} />;
 };
@@ -28,10 +24,10 @@ const createSkills = (skill, i, isPrint) => {
   const color = ['success', 'info', 'warning', 'danger', 'primary'];
 
   const level = { width: `${skill.point}%` };
-  const progressVisible = `progress ${isPrint ? 'd-print-inline d-none' : 'd-print-none'}`;
-  const progressBarColor = `progress-bar ${isPrint ? 'gray' : `progress-bar-striped progress-bar-animated bg-${color[i % color.length]}`}`;
+  const progressVisible = `progress ${isPrint ? 'd-none d-print-block' : 'd-print-none'}`;
+  const progressBarColor = `progress-bar progress-bar-striped progress-bar-animated bg-${isPrint ? 'secondary' : `${color[i % color.length]}`}`;
   return (
-    <div className={progressVisible} key={i}>
+    <div className={progressVisible} key={`skill-${i}`}>
       <div className={progressBarColor}
            role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
            style={level}>
@@ -47,18 +43,18 @@ const createItems = content => {
   const skills = content.items.slice(0, 10).map((skill, i) => createSkills(skill, i, false));
   const skillsPrint = content.items.slice(0, 10).map((skill, i) => createSkills(skill, i, true));
 
-  const createTag = (e) => (
-    <Row>
+  const createTag = (arr, key) => (
+    <Row key={key}>
       <Col xl={12}>
-        {e.length % 2 === 0 ? e.slice(0, e.length / 2) : e.slice(0, e.length / 2 + 1)}
+        {arr.length % 2 === 0 ? arr.slice(0, arr.length / 2) : arr.slice(0, arr.length / 2 + 1)}
       </Col>
       <Col xl={12}>
-        {e.length % 2 === 0 ? e.slice(e.length / 2) : e.slice(e.length / 2 + 1)}
+        {arr.length % 2 === 0 ? arr.slice(arr.length / 2) : arr.slice(arr.length / 2 + 1)}
       </Col>
     </Row>
   );
 
-  return [createTag(skills), createTag(skillsPrint)];
+  return [createTag(skills, 'screen'), createTag(skillsPrint, 'print')];
 };
 
 Skill.propTypes = {

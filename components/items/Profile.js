@@ -14,7 +14,7 @@ const Profile = ({ content }) => {
   }
 
   const items = [];
-  items.push(<Markdown key={content.items[0].title} source={content.items[0].contents}/>);
+  items.push(<Markdown key={`${content.type}-${content.items[0].title}`} source={content.items[0].contents}/>);
   return (<ContentItem title={content.name} items={items}/>);
 };
 

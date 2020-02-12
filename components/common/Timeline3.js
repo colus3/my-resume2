@@ -8,7 +8,7 @@ const Timeline3 = ({ data }) => {
 
   return data.map( (item, i) => {
     const date = `(${moment(item.startDt).format('YYYY-MM')} ~ ${moment(item.endDt).format('YYYY-MM')})`;
-    const badges = item.badges.map((badge) => (<Badge color="secondary">{badge}</Badge>));
+    const badges = item.badges.map((badge, index) => (<Badge key={`b-${index}`} color="secondary">{badge}</Badge>));
     return (
       <div className="timeline3" key={i}>
         <h4>{item.title} {date}</h4>

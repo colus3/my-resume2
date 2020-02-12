@@ -2,8 +2,16 @@ div.icon-right svg {
     margin-left: 10px;
 }
 
+div.icon-right a {
+    color: inherit;
+}
+
 div.icon-left svg {
     margin-right: 10px;
+}
+
+div.icon-left a {
+    color: inherit;
 }
 
 div.name h1 {
@@ -13,17 +21,36 @@ div.title h2 {
     margin-bottom: 20px;
 }
 
+@media only screen {
+    div.jumbotron {
+        color: #fff;
+        background-image: url(https://source.unsplash.com/category/nature/1600x400);
+        background-size: cover;
+        border-bottom-style: none;
+    }
+}
+@media only print {
+    div.jumbotron {
+        border-bottom-width: 2px;
+        border-bottom-color: #eee;
+        border-bottom-style: solid;
+    }
+}
 div.jumbotron {
-    color: #fff;
-    background-image: url(https://source.unsplash.com/category/nature/1600x400);
-    background-size: cover;
+    background-color: #fff;
     padding-bottom: 6px;
 }
+
 
 div.item-header {
     padding-bottom: 9px;
     margin: 40px 0 20px;
     border-bottom: 1px solid #eee;
+}
+
+img.my-image {
+    height: 150px;
+    background-color: rgba(155, 155, 155, 0.5);
 }
 
 .progress {
