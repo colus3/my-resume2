@@ -15,9 +15,6 @@ const Resume = ({ resume }) => {
     rightContents = resumeContents.filter(e => e.position === 'RIGHT');
   }
 
-  // const leftContents = resumeContents.filter(e => e.position === 'LEFT');
-  // const rightContents = resumeContents.filter(e => e.position === 'RIGHT');
-
   const onDownload = useCallback(() => {
     location.href=`/api/pdf/${id}?name=${user.username}`;
   }, []);
@@ -41,7 +38,9 @@ const Resume = ({ resume }) => {
 
 Resume.propTypes = {
   resume: PropTypes.shape({
-    user: PropTypes.object,
+    user: PropTypes.shape({
+      username: PropTypes.string,
+    }),
     shortIntro: PropTypes.string,
     resumeContents: PropTypes.arrayOf(PropTypes.shape({
       position: PropTypes.string,

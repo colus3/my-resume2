@@ -1,12 +1,13 @@
 /**
  * Created by Colus on 2016. 8. 20..
  */
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import ContentItem from '../ContentItem';
 import TimeLine3 from "../common/Timeline3";
+import ModalTimeline from "../common/ModalTimeline";
 
 const WorkExperience = ({ content }) => {
 
@@ -14,12 +15,14 @@ const WorkExperience = ({ content }) => {
     return (<ContentItem />);
   }
 
-  const contentItems = createItems(content.items);
+  const onInfo = useCallback((str) => <ModalTimeline item={str}/>, []);
+
+  const contentItems = createItems(content.items, onInfo);
 
   return <ContentItem title={content.name} items={contentItems}/>;
 };
 
-const createItems = (items) => {
+const createItems = (items, onInfo) => {
   const works = items.map((workEx, i) => ({
     id: i,
     startDt: workEx.startDt,
@@ -27,11 +30,11 @@ const createItems = (items) => {
     title: workEx.title,
     contents: workEx.contents,
     badges: workEx.tagNames,
+    onInfo: onInfo(workEx.title),
   }));
 
   const contentItems = [];
-  // contentItems.push(<TimeLine data={works} usePeriod />);
-  contentItems.push(<TimeLine3 key="workExp" data={works} />);
+  contentItems.push(<TimeLine3 key="workExp" items={works} />);
 
   return contentItems;
 };
