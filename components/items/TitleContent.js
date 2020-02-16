@@ -12,8 +12,12 @@ import UserInfo from './UserInfo';
 import Text from '../Text';
 
 const TitleContent = ({ user, shortIntro, onDownload }) => {
+  const [visibleText, setVisibleText] = useState(false);
   const [pause, setPause] = useState(true);
-  const onTogglePause = useCallback(() => setPause(!pause), [pause]);
+  const onTogglePause = useCallback(() => {
+    setVisibleText(true);
+    setPause(!pause);
+  }, [pause, visibleText]);
   return (
     <Jumbotron fluid>
       <Container fluid>
@@ -35,16 +39,19 @@ const TitleContent = ({ user, shortIntro, onDownload }) => {
       </Container>
       <h6 className="d-none d-print-none d-lg-inline-block">
         <Text icon={faTerminal} iconLeft onClick={onTogglePause} style={{ cursor: 'pointer' }}>
-          {/*{text ? 'This page is designed using Node.js, React.js, Redux, Next.js, MariaDB, Bootstrap, Puppeteer, Docker, AWS.' : ''}*/}
-          <Random
-            text={'This page is designed using Node.js, React.js, Redux, Next.js, MariaDB, Bootstrap, Puppeteer, Docker, AWS.'}
-            paused={pause}
-            iterations={1}
-            effect="verticalFadeIn"
-            effectChange={2}
-            effectDirection="up"
-            style={{float: 'right'}}
-          />
+          {
+            visibleText ?
+            <Random
+              text={'This page is designed using Node.js, React.js, Redux, Next.js, MariaDB, Bootstrap, Puppeteer, Docker, AWS.'}
+              paused={pause}
+              iterations={1}
+              effect="verticalFadeIn"
+              effectChange={2}
+              effectDirection="up"
+              style={{float: 'right'}}
+            />
+            : ''
+          }
         </Text>
       </h6>
       <h6 className="d-none d-print-block">
