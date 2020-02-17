@@ -611,6 +611,9 @@ img.my-image {
 .timeline .timeline-item > .timeline-event .timeline-heading h4 {
     font-weight: 400;
 }
+.timeline .timeline-item > .timeline-event .timeline-body {
+    font-weight: normal;
+}
 .timeline .timeline-item > .timeline-event .timeline-footer a {
     cursor: pointer;
     text-decoration: none;

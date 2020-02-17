@@ -7,11 +7,11 @@ import ReactMarkdown from 'react-markdown';
 import { Badge } from 'reactstrap';
 import moment from "moment";
 
-const TimeLine = ({ data, usePeriod }) => {
+const TimeLine = ({ items, usePeriod }) => {
     
   const style={ 'display': 'inline-block', 'marginRight': '5px', 'color': '#fff' };
 
-  const timeLines = data.map( item => {
+  const timeLines = items.map( item => {
 
     let period = '';
     if ( usePeriod ) {
@@ -26,18 +26,16 @@ const TimeLine = ({ data, usePeriod }) => {
 
     const timeLineHead = (
       <div className="timeline-heading">
-        <h4 className="timeline-title">
+        <h5 className="timeline-title">
           <span name="title">{moment(item.startDt).format('YYYY-MM')} ~ {moment(item.endDt).format('YYYY-MM')} <strong>{item.title}</strong></span>
-        </h4>
+        </h5>
       </div>
     );
 
     const timeLineBody = (
       <div className="timeline-body">
-        <p>{item.contents === '' ? '' : (<ReactMarkdown source={item.contents}/>)}</p>
-        <p>
-          {item.badges === [] ? '' : item.badges.map( (badge, i) => ( <Badge color="secondary" style={style}>{badge}</Badge> ) )}
-        </p>
+        <p>{_.isEmpty(item.contents) ? '' : (<ReactMarkdown source={item.contents}/>)}</p>
+        <p>{_.isEmpty(item.tagNames) ? '' : item.tagNames.map( (badge) => ( <Badge color="secondary" style={style}>{badge}</Badge> ) )}</p>
       </div>
     );
 
@@ -67,7 +65,13 @@ const TimeLine = ({ data, usePeriod }) => {
 };
 
 TimeLine.propTypes = {
-  data: PropTypes.array,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    startDt: PropTypes.string,
+    endDt: PropTypes.string,
+    contents: PropTypes.string,
+    tagNames: PropTypes.array,
+  })),
   usePeriod: PropTypes.bool
 };
 

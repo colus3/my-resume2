@@ -15,7 +15,7 @@ const WorkExperience = ({ content }) => {
     return (<ContentItem />);
   }
 
-  const onInfo = useCallback((str) => <ModalTimeline item={str}/>, []);
+  const onInfo = useCallback((item) => <ModalTimeline item={item}/>, []);
 
   const contentItems = createItems(content.items, onInfo);
 
@@ -29,8 +29,8 @@ const createItems = (items, onInfo) => {
     endDt: workEx.endDt,
     title: workEx.title,
     contents: workEx.contents,
-    badges: workEx.tagNames,
-    onInfo: onInfo(workEx.title),
+    tagNames: workEx.tagNames,
+    info: onInfo(workEx),
   }));
 
   const contentItems = [];
@@ -43,7 +43,9 @@ WorkExperience.propTypes = {
   content: PropTypes.shape({
     type: PropTypes.string,
     name: PropTypes.string,
-    items: PropTypes.array,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      childItems: PropTypes.array,
+    })),
   }),
 };
 

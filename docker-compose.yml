@@ -2,7 +2,7 @@ version: '2.1'
 services:
   app:
     container_name: my-resume2-app
-    image: my-resume2-app
+    image: colus3/my-resume2-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,10 +10,4 @@ services:
       - 4000:3000
     environment:
       - TZ=Asia/Seoul
-    external_links:
-      - my-resume2-api:api
     command: npm run dev
-networks:
-  default:
-    external:
-      name: my-resume2
