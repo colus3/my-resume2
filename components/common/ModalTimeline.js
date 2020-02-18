@@ -17,7 +17,7 @@ const ModalTimeline = ({ item }) => {
       <FontAwesomeIcon color="gray" icon={faCommentDots} onClick={toggle} size={"xs"} style={{cursor: "pointer"}} />
       <Modal returnFocusAfterClose isOpen={open} className="modal-lg modal-dialog-scrollable">
         <ModalHeader toggle={toggle}>
-          <h4>{item.title}</h4>
+          <h4>{`${item.title} Projects`}</h4>
         </ModalHeader>
         <ModalBody>
           {/*{item.childItems.map(e => (<div>{e.contents}</div>))}*/}
