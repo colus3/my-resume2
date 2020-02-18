@@ -5,10 +5,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-const ContentItem = ({ title, items }) => {
-    const contentTitle = _.isEmpty(title) ? '' : (<div className='item-header'><h2>{title}</h2></div>);
+const ContentItem = ({ className, title, items }) => {
+    const contentTitle = _.isEmpty(title) ? '' : (<div className={`${className} item-header`}><h2>{title}</h2></div>);
     return (
-        <div key={title}>
+        <div className={className} key={title}>
           {contentTitle}
           {items}
         </div>

@@ -10,9 +10,11 @@ const Resume = ({ resume }) => {
   const { user, resumeContents, shortIntro, id } = resume;
   let leftContents = [];
   let rightContents = [];
+  let bottomContents = [];
   if (Array.isArray(resumeContents)) {
     leftContents = resumeContents.filter(e => e.position === 'LEFT');
     rightContents = resumeContents.filter(e => e.position === 'RIGHT');
+    bottomContents = resumeContents.filter(e => e.position === 'BOTTOM');
   }
   const username = (_.isEmpty(user) || _.isEmpty(user.username)) ? '' : user.username;
 
@@ -32,6 +34,10 @@ const Resume = ({ resume }) => {
             <Contents key="right" contents={rightContents}/>
           </Col>
         </Row>
+      </Container>
+      <div className="page-break" />
+      <Container>
+        <Contents key="bottom" contents={bottomContents} />
       </Container>
     </Layout>
   );

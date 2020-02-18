@@ -6,6 +6,7 @@ import Interest from "./items/Interest";
 import Certification from "./items/Certification";
 import Skill from "./items/Skill";
 import WorkExperience from "./items/WorkExp";
+import ProjectExperience from "./items/ProjectExp";
 
 const Contents = ({ contents }) => {
 
@@ -17,6 +18,8 @@ const Contents = ({ contents }) => {
       case 'CERTIFICATION': return <Certification key={index} content={content} />;
       case 'SKILL': return <Skill key={index} content={content} />;
       case 'WORK_EXPERIENCE': return <WorkExperience key={index} content={content} />;
+      case 'PROJECT_EXPERIENCE': return <ProjectExperience className="d-none d-print-block" key={index} content={content} />;
+      // case 'PROJECT_EXPERIENCE': return <ProjectExperience key={index} content={content} />;
     }
   });
 

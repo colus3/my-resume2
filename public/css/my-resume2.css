@@ -793,6 +793,12 @@ img.my-image {
     color: #fff;
 }
 
+.timeline2 .badge {
+    display: inline-block;
+    margin-right: 5px;
+    color: #fff !important;
+}
+
 div.test {
     display: none;
 }

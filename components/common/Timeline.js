@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { Badge } from 'reactstrap';
 import moment from "moment";
+import _ from 'lodash';
 
 const TimeLine = ({ items, usePeriod }) => {
     
