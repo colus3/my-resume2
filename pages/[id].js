@@ -7,8 +7,9 @@ const MyResume = ({ resume }) => (
 );
 
 MyResume.getInitialProps = async (ctx) => {
+
   const directAccessId = ctx.query.id;
-  const getResumeUrl = `http://api:8080/api/v2/resumes/id/${directAccessId}`;
+  const getResumeUrl = `${process.env.API_URL}/api/v2/resumes/id/${directAccessId}`;
 
   const result = await axios.get(getResumeUrl, {});
   if (result.data.code === 1000) {

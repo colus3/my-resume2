@@ -23,7 +23,8 @@ const Layout = ({ title, children }) => {
   }, []);
 
   const checkSession = useCallback(async () => {
-    const getMe = `http://local.programmeris.me:8080/api/v2/auth/me`;
+    const getMe = `${process.env.API_URL}/api/v2/auth/me`;
+    console.log('getMe', getMe);
 
     const result = await axios.get(getMe, { withCredentials: true });
     if (result.data.code === 1000) {
@@ -39,11 +40,11 @@ const Layout = ({ title, children }) => {
   }, []);
 
   const onMoveAdmin = useCallback(() => {
-    location.href="http://localhost:5000";
+    location.href=`${process.env.ADMIN_URL}`;
   }, []);
 
   const onLogout = useCallback( async () => {
-    const postLogout = `http://local.programmeris.me:8080/api/v2/auth/logout`;
+    const postLogout = `${process.env.API_URL}/api/v2/auth/logout`;
     const result = await axios.post(postLogout, {}, { withCredentials: true });
     if (result.data.code === 1000) {
       window.location.reload();
