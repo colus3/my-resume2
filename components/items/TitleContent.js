@@ -11,7 +11,7 @@ import Title from '../Title';
 import UserInfo from './UserInfo';
 import Text from '../Text';
 
-const TitleContent = ({ user, shortIntro, onDownload }) => {
+const TitleContent = ({ user, shortIntro, resumeId, onDownload }) => {
   const [visibleText, setVisibleText] = useState(false);
   const [pause, setPause] = useState(true);
   const onTogglePause = useCallback(() => {
@@ -33,7 +33,7 @@ const TitleContent = ({ user, shortIntro, onDownload }) => {
             </p>
           </Col>
           <Col xs="12" sm="4" md="5">
-            <UserInfo user={user}/>
+            <UserInfo user={user} resumeId={resumeId}/>
           </Col>
         </Row>
       </Container>
@@ -66,6 +66,7 @@ const TitleContent = ({ user, shortIntro, onDownload }) => {
 TitleContent.propTypes = {
   user: PropTypes.object,
   shortIntro: PropTypes.string,
+  resumeId: PropTypes.string,
   onDownload: PropTypes.func,
 };
 

@@ -24,7 +24,7 @@ const Resume = ({ resume }) => {
 
   return (
     <Layout title={`${username}'s Resume`}>
-      {_.isEmpty(user) ? '' : <TitleContent user={user} shortIntro={shortIntro} onDownload={onDownload} />}
+      {_.isEmpty(user) ? '' : <TitleContent user={user} resumeId={id} shortIntro={shortIntro} onDownload={onDownload} />}
       <Container>
         <Row>
           <Col sm="12" lg="5">

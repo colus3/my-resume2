@@ -5,7 +5,7 @@ import Text from "../Text";
 import { faEnvelope, faHome, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-const UserInfo = ({ user }) => (
+const UserInfo = ({ user, resumeId }) => (
   <>
     <h5 className="text-right">
       <Text icon={faUser} iconRight>{user.birthDate}</Text>
@@ -23,7 +23,7 @@ const UserInfo = ({ user }) => (
       <Text icon={faGithub} iconRight><a href={user.github} target="_blank">{user.github}</a></Text>
     </h5>
     <h5 className="text-right">
-      <Text><a href="http://localhost:3000"><QRCode value="http://localhost:3000" scale={2.2} color={{ light: '#ffffff7f' }}/></a></Text>
+      <Text><a href={`${process.env.RESUME_URL}/${resumeId}`}><QRCode value={`${process.env.RESUME_URL}/${resumeId}`} scale={1.5} color={{ light: '#fff' }}/></a></Text>
     </h5>
   </>
 );
@@ -38,6 +38,7 @@ UserInfo.propTypes = {
     github: PropTypes.string,
     shortUrl: PropTypes.string,
   }),
+  resumeId: PropTypes.string,
 };
 
 export default UserInfo;
