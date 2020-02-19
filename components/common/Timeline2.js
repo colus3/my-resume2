@@ -8,11 +8,11 @@ import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
 import _ from 'lodash';
 
-const TimeLine2 = ({ items, useYearLabel }) => {
+const Timeline2 = ({ items, useYearLabel }) => {
 
   // const subItems = items.filter((v, i) => i < 16);
-  const timeLines = [];
-  timeLines.push(createTimeLine(items, useYearLabel));
+  const timelines = [];
+  timelines.push(createTimeLine(items, useYearLabel));
   // timeLines.push(createTimeLine(subItems, useYearLabel));
 
   // const repeatCnt = Math.ceil(items.length / 15);
@@ -28,7 +28,7 @@ const TimeLine2 = ({ items, useYearLabel }) => {
   // }
 
   if ( useYearLabel ) {
-    timeLines.push((
+    timelines.push((
       <span key="timeline-labelEnd" className="timeline-label">
         <Badge color="secondary">End</Badge>
       </span>));
@@ -36,7 +36,7 @@ const TimeLine2 = ({ items, useYearLabel }) => {
 
   return (
     <div className="timeline">
-      {timeLines}
+      {timelines}
     </div>
   );
 };
@@ -77,7 +77,7 @@ function createTimeLine( items, useYearLabel ) {
   }, []);
 }
 
-TimeLine2.propTypes = {
+Timeline2.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     contents: PropTypes.string,
@@ -88,4 +88,4 @@ TimeLine2.propTypes = {
   useYearLabel: PropTypes.bool,
 };
 
-export default TimeLine2;
+export default Timeline2;

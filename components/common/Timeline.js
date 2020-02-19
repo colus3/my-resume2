@@ -8,11 +8,11 @@ import { Badge } from 'reactstrap';
 import moment from "moment";
 import _ from 'lodash';
 
-const TimeLine = ({ items, usePeriod }) => {
+const Timeline = ({ items, usePeriod }) => {
     
   const style={ 'display': 'inline-block', 'marginRight': '5px', 'color': '#fff' };
 
-  const timeLines = items.map( item => {
+  const timelines = items.map( item => {
 
     let period = '';
     if ( usePeriod ) {
@@ -25,7 +25,7 @@ const TimeLine = ({ items, usePeriod }) => {
       // }
     }
 
-    const timeLineHead = (
+    const timelineHead = (
       <div className="timeline-heading">
         <h5 className="timeline-title">
           <span name="title">{moment(item.startDt).format('YYYY-MM')} ~ {moment(item.endDt).format('YYYY-MM')} <strong>{item.title}</strong></span>
@@ -33,14 +33,14 @@ const TimeLine = ({ items, usePeriod }) => {
       </div>
     );
 
-    const timeLineBody = (
+    const timelineBody = (
       <div className="timeline-body">
         <p>{_.isEmpty(item.contents) ? '' : (<ReactMarkdown source={item.contents}/>)}</p>
         <p>{_.isEmpty(item.tagNames) ? '' : item.tagNames.map( (badge) => ( <Badge color="secondary" style={style}>{badge}</Badge> ) )}</p>
       </div>
     );
 
-    const timeLineFooter = (
+    const timelineFooter = (
       <div className="timeline-footer">
         <p className="text-right">{period}</p>
       </div>
@@ -50,9 +50,9 @@ const TimeLine = ({ items, usePeriod }) => {
       <div key={item.id} className="timeline-item">
         <div className="timeline-point timeline-point-blank" />
         <div className="timeline-event">
-          {timeLineHead}
-          {timeLineBody}
-          {timeLineFooter}
+          {timelineHead}
+          {timelineBody}
+          {timelineFooter}
         </div>
       </div>
     );
@@ -60,12 +60,12 @@ const TimeLine = ({ items, usePeriod }) => {
 
   return (
     <div className="timeline timeline-single-column">
-      {timeLines}
+      {timelines}
     </div>
   );
 };
 
-TimeLine.propTypes = {
+Timeline.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     startDt: PropTypes.string,
@@ -76,4 +76,4 @@ TimeLine.propTypes = {
   usePeriod: PropTypes.bool
 };
 
-export default TimeLine;
+export default Timeline;
