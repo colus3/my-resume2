@@ -16,7 +16,7 @@ const Education = ({ content }) => {
   }
 
   const educations = content.items.map( education => {
-    return `* ${moment(education.startDt).format('YYYY-MM')} ~ ${moment(education.endDt).format('YYYY-MM')} ${education.contents}\n`;
+    return `* ${moment(education.endDt).format('YYYY-MM')} ${education.contents}\n`;
   }).join(' ');
 
   const contentItems = [];

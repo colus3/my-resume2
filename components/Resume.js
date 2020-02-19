@@ -27,10 +27,10 @@ const Resume = ({ resume }) => {
       {_.isEmpty(user) ? '' : <TitleContent user={user} resumeId={id} shortIntro={shortIntro} onDownload={onDownload} />}
       <Container>
         <Row>
-          <Col sm="12" lg="5">
+          <Col sm="12" md="4">
             <Contents key="left" contents={leftContents}/>
           </Col>
-          <Col sm="12" lg="7">
+          <Col sm="12" md="8">
             <Contents key="right" contents={rightContents}/>
           </Col>
         </Row>

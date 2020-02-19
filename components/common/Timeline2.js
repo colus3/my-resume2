@@ -10,22 +10,7 @@ import _ from 'lodash';
 
 const Timeline2 = ({ items, useYearLabel }) => {
 
-  // const subItems = items.filter((v, i) => i < 16);
-  const timelines = [];
-  timelines.push(createTimeLine(items, useYearLabel));
-  // timeLines.push(createTimeLine(subItems, useYearLabel));
-
-  // const repeatCnt = Math.ceil(items.length / 15);
-  // if (items.length > 15) {
-  //   for (let i = 0; i < repeatCnt; i++) {
-  //     const splicedItems = items.splice(0, (items.length >= 15) ? 15 : items.length);
-  //     console.log('splicedItems', i, splicedItems);
-  //     timeLines.push(createTimeLine(splicedItems, useYearLabel));
-  //     timeLines.push(<div className="page-break" />);
-  //   }
-  // } else {
-  //   timeLines.push(createTimeLine(items, useYearLabel));
-  // }
+  const timelines = createTimeLine(items, useYearLabel);
 
   if ( useYearLabel ) {
     timelines.push((
@@ -66,8 +51,8 @@ function createTimeLine( items, useYearLabel ) {
             </h5>
           </div>
           <div className="timeline-body timeline2">
-            <p>{_.isEmpty(item.contents) ? '' : <ReactMarkdown source={item.contents}/>}</p>
-            <p>{_.isEmpty(item.tagNames) ? '' : item.tagNames.map((tagName, i) => <Badge key={`b-${i}`} color="secondary">{tagName}</Badge>)}</p>
+            {_.isEmpty(item.contents) ? '' : <ReactMarkdown source={item.contents}/>}
+            {_.isEmpty(item.tagNames) ? '' : item.tagNames.map((tagName, i) => <Badge key={`b-${i}`} color="secondary">{tagName}</Badge>)}
           </div>
         </div>
       </div>

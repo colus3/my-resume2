@@ -24,8 +24,6 @@ const Layout = ({ title, children }) => {
 
   const checkSession = useCallback(async () => {
     const getMe = `${process.env.API_URL}/api/v2/auth/me`;
-    console.log('getMe', getMe);
-
     const result = await axios.get(getMe, { withCredentials: true });
     if (result.data.code === 1000) {
       return {

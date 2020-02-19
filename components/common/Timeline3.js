@@ -12,7 +12,7 @@ const Timeline3 = ({ items }) => {
     const badges = _.isEmpty(item.tagNames) ? [] : item.tagNames.map((badge, index) => (<Badge key={`b-${index}`} color="secondary">{badge}</Badge>));
     return (
       <div className="timeline3" key={i}>
-        <h4>{item.title} {period} {item.info}</h4>
+        <h5>{item.title} {period} {item.info}</h5>
         <ReactMarkdown source={item.contents}/>
         {badges}
       </div>
