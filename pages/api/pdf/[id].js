@@ -1,16 +1,14 @@
 import React from 'react';
 import puppeteer from 'puppeteer';
 import moment from 'moment';
-import absoluteUrl from 'next-absolute-url';
 
 const Doc = async (req, res) => {
-  const { protocol, host } = absoluteUrl(req);
+  console.log('RESUME_URL', process.env.RESUME_URL);
   const browser = await puppeteer.launch({
     defaultViewport: { width: 1024, height: 768 }
   });
-  console.info(req.connection.remoteAddress);
   const page = await browser.newPage();
-  await page.goto(`http://${host}/${req.query.id}`);
+  await page.goto(`${process.env.RESUME_URL}/${req.query.id}`);
   const pdf = await page.pdf({
     scale: 0.73,
     format: 'A4',
