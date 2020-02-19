@@ -14,7 +14,7 @@ const ModalTimeline = ({ item }) => {
       <FontAwesomeIcon className="d-print-none" color="gray" icon={faInfoCircle} onClick={toggle} size={"xs"} style={{cursor: "pointer"}} />
       <Modal returnFocusAfterClose isOpen={open} className="modal-lg modal-dialog-scrollable">
         <ModalHeader toggle={toggle}>
-          <h4>{`${item.title} Projects`}</h4>
+          <h4>{`${item.title}`}</h4>
         </ModalHeader>
         <ModalBody>
           <Timeline items={item.childItems}/>

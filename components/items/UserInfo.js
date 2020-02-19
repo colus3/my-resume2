@@ -23,7 +23,7 @@ const UserInfo = ({ user, resumeId }) => (
       <Text icon={faGithub} iconRight><a href={user.github} target="_blank">{user.github}</a></Text>
     </h5>
     <h5 className="text-right">
-      <Text><a href={`${process.env.RESUME_URL}/${resumeId}`}><QRCode value={`${process.env.RESUME_URL}/${resumeId}`} scale={1.5} color={{ light: '#fff' }}/></a></Text>
+      <Text><a href={`${process.env.RESUME_URL}/${resumeId}`}><QRCode value={`${process.env.RESUME_URL}/${resumeId}`} scale={2.5} color={{ light: '#fff' }}/></a></Text>
     </h5>
   </>
 );
