@@ -1,9 +1,12 @@
 const withCSS = require('@zeit/next-css');
 
+require('dotenv').config();
+
 module.exports = withCSS({
   env: {
-    API_URL: 'http://api.docker.programmeris.me',
-    ADMIN_URL: 'http://admin.docker.programmeris.me',
-    RESUME_URL: 'http://local.programmeris.me:3000',
+    NODE_ENV: process.env.NODE_ENV,
+    API_URL: process.env.API_URL,
+    ADMIN_URL: 'http://admin.myresume.kr',
+    RESUME_URL: 'http://myresume.kr',
   }
 });
