@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create dotenv
-      - run: |
+        run: |
           echo 'API_URL=${{ secrets.API_URL }}' > .env
           echo 'ADMIN_URL=${{ secrets.ADMIN_URL }}' >> .env
           echo 'RESUME_URL=${{ secrets.RESUME_URL }}' >> .env
