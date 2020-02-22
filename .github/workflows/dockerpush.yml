@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create .env
+      - name: Create dotenv
         - run: |
             echo 'API_URL=${{ secrets.API_URL }}' > .env
             echo 'ADMIN_URL=${{ secrets.ADMIN_URL }}' >> .env
