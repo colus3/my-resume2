@@ -1,11 +1,12 @@
 const withCSS = require('@zeit/next-css');
 
-require('dotenv').config();
+const dotEnv = require('dotenv');
+dotEnv.config();
 
 module.exports = withCSS({
   env: {
-    API_URL: 'http://api.myresume.kr:8080',
-    ADMIN_URL: 'http://admin.myresume.kr:3000',
-    RESUME_URL: 'http://myresume.kr:3000',
+    API_URL: process.env.API_URL,
+    ADMIN_URL: process.env.ADMIN_URL,
+    RESUME_URL: process.env.RESUME_URL,
   }
 });

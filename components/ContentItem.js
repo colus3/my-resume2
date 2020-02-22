@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const ContentItem = ({ className, title, items }) => {
-    const contentTitle = _.isEmpty(title) ? '' : (<div className={`${className} item-header`}><h3>{title}</h3></div>);
-    return (
-        <div className={className} key={title}>
-          {contentTitle}
-          {items}
-        </div>
-    );
+  const contentTitle = _.isEmpty(title) ? '' : (<div className={`${_.isEmpty(className) ? '' : className} item-header`}><h3>{title}</h3></div>);
+  return (
+      <div className={className} key={title}>
+        {contentTitle}
+        {items}
+      </div>
+  );
 };
 
 ContentItem.propTypes = {

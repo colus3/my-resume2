@@ -5,7 +5,11 @@ import moment from 'moment';
 const Doc = async (req, res) => {
   console.log('RESUME_URL', process.env.RESUME_URL);
   const browser = await puppeteer.launch({
-    defaultViewport: { width: 1024, height: 1366 }
+    executablePath: '/usr/bin/chromium-browser',
+    args: ['--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage'],
+    defaultViewport: { width: 1024, height: 1366 },
   });
   const page = await browser.newPage();
   await page.goto(`${process.env.RESUME_URL}/${req.query.id}`);

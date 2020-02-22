@@ -1,3 +1,11 @@
+body {
+    font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+}
+
+div.jumbotron {
+    margin-bottom: 0;
+}
+
 div.icon-right svg {
     margin-left: 10px;
 }
@@ -51,8 +59,8 @@ div.jumbotron {
 
 
 div.item-header {
-    padding-bottom: 9px;
-    margin: 40px 0 20px;
+    padding-bottom: 5px;
+    margin: 25px 0 12px;
     border-bottom: 1px solid #eee;
 }
 
