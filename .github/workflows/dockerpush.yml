@@ -32,7 +32,7 @@ jobs:
           echo 'TZ=Asia/Seoul' >> .env
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag image --shm-size=1gb --env_file=.env
+        run: docker build . --file Dockerfile --tag image --shm-size=1gb
 
       - name: Log into registry
         run: echo '${{ secrets.DOCKER_PASSWORD }}' | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
