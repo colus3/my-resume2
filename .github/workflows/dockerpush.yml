@@ -24,12 +24,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create dotenv
-        - run: |
-            echo 'API_URL=${{ secrets.API_URL }}' > .env
-            echo 'ADMIN_URL=${{ secrets.ADMIN_URL }}' >> .env
-            echo 'RESUME_URL=${{ secrets.RESUME_URL }}' >> .env
-            echo 'NODE_ENV=production' >> .env
-            echo 'TZ=Asia/Seoul' >> .env
+      - run: |
+          echo 'API_URL=${{ secrets.API_URL }}' > .env
+          echo 'ADMIN_URL=${{ secrets.ADMIN_URL }}' >> .env
+          echo 'RESUME_URL=${{ secrets.RESUME_URL }}' >> .env
+          echo 'NODE_ENV=production' >> .env
+          echo 'TZ=Asia/Seoul' >> .env
 
       - name: Build image
         run: docker build . --file Dockerfile --tag image --shm-size=1gb --env_file=.env
