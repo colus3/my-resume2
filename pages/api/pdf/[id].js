@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 import moment from 'moment';
 
 const Doc = async (req, res) => {
-  console.log('Request IP', req.connection.remoteAddress());
+  console.log('Request IP', req.connection.remoteAddress);
   const browser = await puppeteer.launch({
     executablePath: '/usr/bin/chromium-browser',
     args: ['--no-sandbox',
