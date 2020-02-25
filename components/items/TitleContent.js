@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Container, Jumbotron, Row } from 'reactstrap';
 import { faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { Random } from 'react-animated-text';
+import _ from 'lodash';
 import Name from '../Name';
 import Title from '../Title';
 import UserInfo from './UserInfo';
@@ -29,7 +30,7 @@ const TitleContent = ({ user, shortIntro, resumeId, onDownload }) => {
           </Col>
           <Col className="d-none d-md-block" md="2">
             <p>
-              <img src="/img/my-image2.png" className="rounded-circle mx-auto d-block my-image" alt="Responsive image"/>
+              <img src={_.isEmpty(user.image) ? '/img/my-image.png' : user.image } className="rounded-circle mx-auto d-block my-image" alt="Responsive image"/>
             </p>
           </Col>
           <Col xs="12" sm="4" md="5">
