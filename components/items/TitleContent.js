@@ -29,7 +29,7 @@ const TitleContent = ({ user, shortIntro, resumeId, onDownload }) => {
           </Col>
           <Col className="d-none d-md-block" md="2">
             <p>
-              <img src="/my-image.png" className="rounded-circle mx-auto d-block my-image" alt="Responsive image"/>
+              <img src="/img/my-image2.png" className="rounded-circle mx-auto d-block my-image" alt="Responsive image"/>
             </p>
           </Col>
           <Col xs="12" sm="4" md="5">
