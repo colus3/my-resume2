@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Container, Row } from "reactstrap";
 import _ from 'lodash';
+import Meta from './Meta';
 import TitleContent from "./items/TitleContent";
 import Contents from "./Contents";
 import Layout from "./Layout";
@@ -22,8 +23,10 @@ const Resume = ({ resume }) => {
     location.href=`/api/pdf/${id}?name=${username}`;
   }, []);
 
+  const meta = <Meta title={`${user.username}'s Resume`} description={shortIntro} image={`${process.env.RESUME_URL}/${user.image}`} url={`${process.env.RESUME_URL}/${id}`} />;
+
   return (
-    <Layout title={`${username}'s Resume`}>
+    <Layout meta={meta}>
       {_.isEmpty(user) ? '' : <TitleContent user={user} resumeId={id} shortIntro={shortIntro} onDownload={onDownload} />}
       <Container>
         <Row>

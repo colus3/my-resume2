@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container } from 'reactstrap';
-import Head from 'next/head';
 import '../public/css/my-resume2.css';
 import axios from "axios";
 import Text from "./Text";
 
-const Layout = ({ title, children }) => {
+const Layout = ({ meta, children }) => {
   const [showButton, setShowButton] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
@@ -51,9 +50,7 @@ const Layout = ({ title, children }) => {
 
   return (
     <div>
-      <Head>
-        <title>{title ? title : 'Resume'}</title>
-      </Head>
+      {meta}
       {showButton &&
       <Container fluid className="top-container">
         { loggedIn ?
@@ -77,6 +74,7 @@ const Layout = ({ title, children }) => {
 };
 
 Layout.propTypes = {
+  meta: PropTypes.object,
   title: PropTypes.string,
 };
 
