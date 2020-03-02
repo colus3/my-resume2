@@ -11,6 +11,7 @@ const Doc = async (req, res) => {
     defaultViewport: { width: 1024, height: 1366 },
   });
   const page = await browser.newPage();
+  console.log(`resume url : ${process.env.RESUME_URL}/${req.query.id}`);
   await page.goto(`${process.env.RESUME_URL}/${req.query.id}`);
   const pdf = await page.pdf({
     scale: 0.8,
