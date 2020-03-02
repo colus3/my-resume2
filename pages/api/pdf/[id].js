@@ -11,8 +11,10 @@ const Doc = async (req, res) => {
     defaultViewport: { width: 1024, height: 1366 },
   });
   const page = await browser.newPage();
-  console.log(`resume url : ${process.env.RESUME_URL}/${req.query.id}`);
-  const response = await page.goto(`${process.env.RESUME_URL}/${req.query.id}`);
+  // const resumeUrl = `${process.env.RESUME_URL}/${req.query.id}`;
+  const resumeUrl = 'https://myresume.kr/1fdb0027-b638-4ba3-aafb-59ae9a6866f9';
+  console.log(`resume url : ${resumeUrl}`);
+  const response = await page.goto(resumeUrl);
   console.log('cache : ', response.fromCache());
   const pdf = await page.pdf({
     scale: 0.8,
