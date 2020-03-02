@@ -17,6 +17,9 @@ const Resume = ({ resume }) => {
     rightContents = resumeContents.filter(e => e.position === 'RIGHT');
     bottomContents = resumeContents.filter(e => e.position === 'BOTTOM');
   }
+
+  console.log('bottom : ', bottomContents);
+
   const username = (_.isEmpty(user) || _.isEmpty(user.username)) ? '' : user.username;
   const userImage = (_.isEmpty(user) || _.isEmpty(user.image)) ? '/img/my-image.png' : user.image;
 
