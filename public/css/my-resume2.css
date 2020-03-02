@@ -832,3 +832,7 @@ span.login-text > h6 {
 button.login {
     margin: 10px 5px 10px;
 }
+
+div.modal-content {
+    max-height: calc(100% - 7rem);
+}
