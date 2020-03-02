@@ -834,5 +834,5 @@ button.login {
 }
 
 div.modal-content {
-    max-height: calc(100% - 7rem);
+    max-height: calc(100vh - 7rem) !important;
 }
