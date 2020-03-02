@@ -21,6 +21,7 @@ const Doc = async (req, res) => {
     path: `/tmp/${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`,
     margin: {top: '50px', right: '10px', bottom: '20px', left: '10px'}});
   await browser.close();
+  console.log('pdf', pdf);
   const username = req.query.name;
   res.setHeader("Content-Disposition", `attachment;filename=${username}.pdf;`);
   res.status(200).send(pdf);
