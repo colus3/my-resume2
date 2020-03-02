@@ -12,7 +12,8 @@ const Doc = async (req, res) => {
   });
   const page = await browser.newPage();
   console.log(`resume url : ${process.env.RESUME_URL}/${req.query.id}`);
-  await page.goto(`${process.env.RESUME_URL}/${req.query.id}`);
+  const response = await page.goto(`${process.env.RESUME_URL}/${req.query.id}`);
+  console.log('cache : ', response.fromCache());
   const pdf = await page.pdf({
     scale: 0.8,
     format: 'A4',
