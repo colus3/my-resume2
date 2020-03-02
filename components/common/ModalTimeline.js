@@ -9,12 +9,12 @@ const ModalTimeline = ({ item }) => {
 
   const toggle = useCallback(() => setOpen(!open), [open]);
 
-  // const externalCloseBtn = <button className="close" style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={toggle}>&times;</button>;
+  const externalCloseBtn = <button className="close" style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={toggle}>&times;</button>;
   return (
     <div className="float-right">
       <FontAwesomeIcon className="d-print-none" color="gray" icon={faInfoCircle} onClick={toggle} size={"xs"} style={{cursor: "pointer"}} />
-      <Modal isOpen={open} className="modal-lg modal-dialog-scrollable">
-        <ModalHeader toggle={toggle}>
+      <Modal isOpen={open} className="modal-lg modal-dialog-scrollable" external={externalCloseBtn}>
+        <ModalHeader>
           <h4>{`${item.title}`}</h4>
         </ModalHeader>
         <ModalBody>
