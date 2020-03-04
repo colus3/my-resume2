@@ -14,7 +14,8 @@ const Doc = async (req, res) => {
   const resumeUrl = `${process.env.RESUME_URL}/${req.query.id}`;
   const response = await page.goto(resumeUrl);
   console.log('cache : ', response.fromCache());
-  console.info(req.headers['x-forwarded-for']);
+  console.info('x-forwarded-for : ', req.headers['x-forwarded-for']);
+  console.info('x-real-ip', req.headers['x-real-ip']);
   const pdf = await page.pdf({
     scale: 0.8,
     format: 'A4',
