@@ -40,12 +40,7 @@ const Doc = async (req, res) => {
     Body: base64data,
     Key: pdfFilename,
   };
-  await s3.putObject(params, (err, data) => {
-    if (err) console.log(err);
-    else {
-      console.log('Successfully uploaded pdf from bucket');
-    }
-  });
+  await s3.putObject(params).promise();
   const username = req.query.name;
   res.setHeader("Content-Disposition", `attachment;filename=${username}.pdf;`);
   res.status(200).send(pdf);
