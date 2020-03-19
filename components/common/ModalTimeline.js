@@ -12,7 +12,7 @@ const ModalTimeline = ({ item }) => {
   return (
     <div className="float-right">
       <FontAwesomeIcon className="d-print-none" color="gray" icon={faInfoCircle} onClick={toggle} size={"xs"} style={{cursor: "pointer"}} />
-      <Modal returnFocusAfterClose isOpen={open} className="modal-lg modal-dialog-scrollable">
+      <Modal isOpen={open} size={"lg"} scrollable={true} centered={true}>
         <ModalHeader toggle={toggle}>
           <h4>{`${item.title}`}</h4>
         </ModalHeader>

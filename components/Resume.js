@@ -17,13 +17,15 @@ const Resume = ({ resume }) => {
     rightContents = resumeContents.filter(e => e.position === 'RIGHT');
     bottomContents = resumeContents.filter(e => e.position === 'BOTTOM');
   }
+
   const username = (_.isEmpty(user) || _.isEmpty(user.username)) ? '' : user.username;
+  const userImage = (_.isEmpty(user) || _.isEmpty(user.image)) ? '/img/my-image.png' : user.image;
 
   const onDownload = useCallback(() => {
     location.href=`/api/pdf/${id}?name=${username}`;
   }, []);
 
-  const meta = <Meta title={`${user.username}'s Resume`} description={shortIntro} image={`${process.env.RESUME_URL}/${user.image}`} url={`${process.env.RESUME_URL}/${id}`} />;
+  const meta = <Meta title={`${username}'s Resume`} description={shortIntro} image={`${process.env.RESUME_URL}/${userImage}`} url={`${process.env.RESUME_URL}/${id}`} />;
 
   return (
     <Layout meta={meta}>

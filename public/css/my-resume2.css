@@ -57,7 +57,7 @@ div.content-title h3 {
     }
 }
 div.jumbotron {
-    background-color: #fff;
+    background-color: #c8c8c8;
     padding-bottom: 6px;
 }
 
@@ -831,4 +831,8 @@ span.login-text > h6 {
 }
 button.login {
     margin: 10px 5px 10px;
+}
+
+div.modal-content {
+    max-height: calc(100vh - 7rem) !important;
 }
