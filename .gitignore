@@ -208,6 +208,6 @@ fabric.properties
 # Nextjs
 .next
 
-pdf
+pdf/*.pdf
 
 package-lock.json
