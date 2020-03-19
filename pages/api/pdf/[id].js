@@ -1,8 +1,16 @@
 import React from 'react';
 import puppeteer from 'puppeteer';
 import moment from 'moment';
+import AWS from 'aws-sdk';
 
 const Doc = async (req, res) => {
+  const s3 = new AWS.S3({
+    credentials: {
+      accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+      regionName: 'ap-northeast-2',
+    }
+  });
   const browser = await puppeteer.launch({
     executablePath: '/usr/bin/chromium-browser',
     args: ['--no-sandbox',
