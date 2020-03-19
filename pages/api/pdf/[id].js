@@ -8,9 +8,10 @@ const Doc = async (req, res) => {
     credentials: {
       accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
-      regionName: 'ap-northeast-2',
+      region: 'ap-northeast-2',
     }
   });
+  const bucketName = 'myresume2';
   const browser = await puppeteer.launch({
     executablePath: '/usr/bin/chromium-browser',
     args: ['--no-sandbox',
@@ -24,13 +25,27 @@ const Doc = async (req, res) => {
   console.log('cache : ', response.fromCache());
   console.info('x-forwarded-for : ', req.headers['x-forwarded-for']);
   console.info('x-real-ip', req.headers['x-real-ip']);
+  const pdfFilename = `${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`;
   const pdf = await page.pdf({
     scale: 0.8,
     format: 'A4',
     printBackground: true,
-    path: `/tmp/${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`,
+    path: `/tmp/${pdfFilename}`,
     margin: {top: '50px', right: '10px', bottom: '20px', left: '10px'}});
   await browser.close();
+  const base64data = new Buffer(pdf, 'base64');
+  const params = {
+    Bucket: bucketName,
+    ACL: 'public-read',
+    Body: base64data,
+    Key: pdfFilename,
+  };
+  await s3.putObject(params, (err, data) => {
+    if (err) console.log(err);
+    else {
+      console.log('Successfully uploaded pdf from bucket');
+    }
+  });
   const username = req.query.name;
   res.setHeader("Content-Disposition", `attachment;filename=${username}.pdf;`);
   res.status(200).send(pdf);
