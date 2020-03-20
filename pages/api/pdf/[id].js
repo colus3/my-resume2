@@ -38,7 +38,7 @@ const Doc = async (req, res) => {
     Bucket: bucketName,
     ACL: 'public-read',
     Body: base64data,
-    Key: pdfFilename,
+    Key: `pdf/${pdfFilename}`,
   };
   await s3.putObject(params).promise();
   const username = req.query.name;
