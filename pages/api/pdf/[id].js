@@ -33,7 +33,7 @@ const Doc = async (req, res) => {
     path: `/tmp/${pdfFilename}`,
     margin: {top: '50px', right: '10px', bottom: '20px', left: '10px'}});
   await browser.close();
-  const base64data = new Buffer(pdf, 'base64');
+  const base64data = Buffer.from(pdf).toString('base64');
   const params = {
     Bucket: bucketName,
     ACL: 'public-read',
