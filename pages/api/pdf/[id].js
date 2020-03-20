@@ -26,7 +26,7 @@ const Doc = async (req, res) => {
   console.log('cache : ', response.fromCache());
   console.info('x-forwarded-for : ', xForwardedFor);
   console.info('x-real-ip', req.headers['x-real-ip']);
-  console.info('ip : ', xForwardedFor !== undefined ? xForwardedFor.split('')[0] : '');
+  console.info('ip : ', xForwardedFor !== undefined ? xForwardedFor.split(',')[0] : '');
   const pdfFilename = `${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`;
   const pdf = await page.pdf({
     scale: 0.8,
