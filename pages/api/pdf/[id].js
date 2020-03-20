@@ -22,8 +22,10 @@ const Doc = async (req, res) => {
   const page = await browser.newPage();
   const resumeUrl = `${process.env.RESUME_URL}/${req.query.id}`;
   const response = await page.goto(resumeUrl);
+  const xForwardedFor = req.headers['x-forwarded-for'].split('');
   console.log('cache : ', response.fromCache());
-  console.info('x-forwarded-for : ', req.headers['x-forwarded-for']);
+  console.info('x-forwarded-for : ', xForwardedFor);
+  console.info('ip : ', xForwardedFor[0]);
   console.info('x-real-ip', req.headers['x-real-ip']);
   const pdfFilename = `${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`;
   const pdf = await page.pdf({
