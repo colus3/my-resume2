@@ -23,17 +23,17 @@ const Doc = async (req, res) => {
   const resumeUrl = `${process.env.RESUME_URL}/${req.query.id}`;
   const response = await page.goto(resumeUrl);
   const xForwardedFor = req.headers['x-forwarded-for'];
+  const requestIp = xForwardedFor !== undefined ? xForwardedFor.split(',')[0] : '';
+  console.log(`request ip : ${requestIp}`);
   console.log('cache : ', response.fromCache());
-  console.info('x-forwarded-for : ', xForwardedFor);
-  console.info('x-real-ip', req.headers['x-real-ip']);
-  console.info('ip : ', xForwardedFor !== undefined ? xForwardedFor.split(',')[0] : '');
   const pdfFilename = `${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`;
   const pdf = await page.pdf({
     scale: 0.8,
     format: 'A4',
     printBackground: true,
     path: `/tmp/${pdfFilename}`,
-    margin: {top: '50px', right: '10px', bottom: '20px', left: '10px'}});
+    margin: {top: '50px', right: '10px', bottom: '20px', left: '10px'}
+  });
   await browser.close();
   const base64data = Buffer.from(pdf).toString('base64');
   const params = {

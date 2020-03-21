@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { Button, Container } from 'reactstrap';
 import '../public/css/my-resume2.css';
-import axios from "axios";
-import Text from "./Text";
+import Text from './Text';
 
 const Layout = ({ meta, children }) => {
+  const dispatch = useDispatch();
   const [showButton, setShowButton] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');

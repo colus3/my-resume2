@@ -1,21 +1,23 @@
 import React from 'react';
-import axios from "axios";
-import Resume from "../components/Resume";
+// import axios from "axios";
+import Resume from '../components/Resume';
+import { LOAD_RESUME_REQUEST } from '../reducers/resume';
+import { useSelector } from 'react-redux';
 
-const MyResume = ({ resume }) => (
-  <Resume resume={resume} />
-);
+const MyResume = () => {
+  const resume = useSelector((state) => state.resume);
+  console.log('resume : ', resume);
+  return <Resume resume={resume} />;
+};
 
 MyResume.getInitialProps = async (ctx) => {
 
   const directAccessId = ctx.query.id;
-  const getResumeUrl = `${process.env.API_URL}/api/v2/resumes/id/${directAccessId}`;
 
-  const result = await axios.get(getResumeUrl, {});
-  if (result.data.code === 1000) {
-    return {resume: result.data.data};
-  }
-  return {resume: {}};
+  ctx.store.dispatch({
+    type: LOAD_RESUME_REQUEST,
+    id: directAccessId,
+  });
 };
 
 export default MyResume;
