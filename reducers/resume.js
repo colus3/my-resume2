@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
       return { ...state };
     }
     case LOAD_RESUME_SUCCESS: {
-      return { ...action.data.data };
+      return { ...action.data };
     }
     case LOAD_RESUME_FAILURE: {
       return {

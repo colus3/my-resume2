@@ -21,7 +21,7 @@ function* getMe() {
     const result = yield call(getMeAPI);
     yield put({ // post reducer의 데이터를 수정
       type: LOAD_ME_SUCCESS,
-      data: result.data,
+      data: result.data.data,
     });
   } catch (e) {
     yield put({
@@ -44,7 +44,7 @@ function* logout() {
     const result = yield call(logoutAPI);
     yield put({
       type: LOG_OUT_SUCCESS,
-      data: result.data,
+      loggedIn: false,
     });
   } catch (e) {
     yield put({

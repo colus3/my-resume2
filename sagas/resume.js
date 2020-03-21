@@ -17,7 +17,7 @@ function* getResume(action) {
     const result = yield call(getResumeAPI, action.id);
     yield put({ // post reducer의 데이터를 수정
       type: LOAD_RESUME_SUCCESS,
-      data: result.data,
+      data: result.data.data,
     });
   } catch (e) {
     yield put({

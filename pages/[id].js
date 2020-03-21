@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const MyResume = () => {
   const resume = useSelector((state) => state.resume);
-  console.log('resume : ', resume);
+  // console.log('resume : ', resume);
   return <Resume resume={resume} />;
 };
 

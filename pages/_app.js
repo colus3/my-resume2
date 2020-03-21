@@ -10,6 +10,7 @@ import rootSaga from '../sagas';
 import 'bootstrap/dist/css/bootstrap.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { LOAD_ME_REQUEST } from "../reducers/session";
 
 config.autoAddCss = false;
 
@@ -26,6 +27,16 @@ App.getInitialProps = async (context) => {
   // if (ctx.isServer && cookie) {
   //   axios.defaults.headers.Cookie = cookie;
   // }
+  const state = ctx.store.getState();
+  const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
+  if (ctx.isServer && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  if (!state.user) {
+    ctx.store.dispatch({
+      type: LOAD_ME_REQUEST,
+    });
+  }
 
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx) || {};

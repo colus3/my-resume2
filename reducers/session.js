@@ -1,4 +1,7 @@
-const initialState = {};
+const initialState = {
+  loggedIn: false,
+  user: {},
+};
 
 export const LOAD_ME_REQUEST = 'LOAD_ME_REQUEST';
 export const LOAD_ME_SUCCESS = 'LOAD_ME_SUCCESS';
@@ -16,7 +19,10 @@ export default (state = initialState, action) => {
       return { ...state };
     }
     case LOAD_ME_SUCCESS: {
-      return { ...action.data.data };
+      return {
+        loggedIn: true,
+        user: action.data.user,
+      };
     }
     case LOAD_ME_FAILURE: {
       return {
@@ -29,7 +35,10 @@ export default (state = initialState, action) => {
       return { ...state };
     }
     case LOG_OUT_SUCCESS: {
-      return { ...action.data.data };
+      return {
+        loggedIn : action.loggedIn,
+        user: {},
+      };
     }
     case LOG_OUT_FAILURE: {
       return {
