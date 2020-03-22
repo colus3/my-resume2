@@ -1,17 +1,14 @@
 import React from 'react';
-// import axios from "axios";
 import Resume from '../components/Resume';
 import { LOAD_RESUME_REQUEST } from '../reducers/resume';
 import { useSelector } from 'react-redux';
 
 const MyResume = () => {
   const resume = useSelector((state) => state.resume);
-  // console.log('resume : ', resume);
   return <Resume resume={resume} />;
 };
 
 MyResume.getInitialProps = async (ctx) => {
-
   const directAccessId = ctx.query.id;
 
   ctx.store.dispatch({
