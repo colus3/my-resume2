@@ -20,13 +20,15 @@ const Doc = async (req, res) => {
     defaultViewport: { width: 1024, height: 1366 },
   });
   const page = await browser.newPage();
-  const resumeUrl = `${process.env.RESUME_URL}/${req.query.id}`;
+  const resumeId = req.query.id;
+  const username = req.query.name;
+  const resumeUrl = `${process.env.RESUME_URL}/${resumeId}`;
   const response = await page.goto(resumeUrl);
   const xForwardedFor = req.headers['x-forwarded-for'];
   const requestIp = xForwardedFor !== undefined ? xForwardedFor.split(',')[0] : '';
-  console.log(`request ip : ${requestIp}`);
   console.log('cache : ', response.fromCache());
-  const pdfFilename = `${req.query.name}(${req.query.id})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`;
+  console.log(`${requestIp} ${resumeId} ${username}`);
+  const pdfFilename = `${username}(${resumeId})_${moment().format('YYYYMMDDHHmmssSSS')}.pdf`;
   const pdf = await page.pdf({
     scale: 0.8,
     format: 'A4',
@@ -43,7 +45,6 @@ const Doc = async (req, res) => {
     Key: `pdf/${pdfFilename}`,
   };
   await s3.putObject(params).promise();
-  const username = req.query.name;
   res.setHeader("Content-Disposition", `attachment;filename=${username}.pdf;`);
   res.status(200).send(pdf);
 };
