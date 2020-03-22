@@ -5,12 +5,13 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
-import reducer from '../reducers';
-import rootSaga from '../sagas';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { LOAD_ME_REQUEST } from "../reducers/session";
+import rootReducer from '../reducers';
+import rootSaga from '../sagas';
+import { LOAD_ME_REQUEST } from '../reducers/session';
 
 config.autoAddCss = false;
 
@@ -23,10 +24,6 @@ const App = ({ Component, store, pageProps }) => (
 App.getInitialProps = async (context) => {
   const { ctx, Component } = context;
   let pageProps = {};
-  // const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
-  // if (ctx.isServer && cookie) {
-  //   axios.defaults.headers.Cookie = cookie;
-  // }
   const state = ctx.store.getState();
   const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
   if (ctx.isServer && cookie) {
@@ -52,7 +49,7 @@ const configureStore = (initialState, options) => {
     : compose(applyMiddleware(...middlewares),
       !options.isServer && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
     );
-  const store = createStore(reducer, initialState, enhancer);
+  const store = createStore(rootReducer, initialState, enhancer);
   store.sagaTask = sagaMiddleware.run(rootSaga);
   return store;
 };
