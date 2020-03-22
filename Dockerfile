@@ -33,6 +33,8 @@ RUN npm install
 # Copying source files
 COPY components/ ./components/
 COPY pages/ ./pages/
+COPY reducers/ ./reducers/
+COPY sagas/ ./sagas/
 COPY public/ ./public/
 COPY next.config.js ./
 COPY .env ./
